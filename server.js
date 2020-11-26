@@ -15,7 +15,6 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-var game = new game.Game();
 
 
 io.on('connection', function(socket){
