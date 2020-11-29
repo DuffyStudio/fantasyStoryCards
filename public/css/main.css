@@ -1,10 +1,25 @@
-@font-face {
-  font-family: Pixel;
-  src: url("Pixel\ NES.otf") format("opentype");
+body, html {
+    height: 100%;
 }
 
-canvas {
-    background-image: url('../../images/vhs-overlay-png.png');
+.bg {
+    background-image: url("../../public/images/vhs-overlay-png.png");
+
+    height: 100%;
+
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
+}
+
+@font-face {
+    font-family: customFont;
+    src: url("../../public/css/VCR_OSD_MONO_1.001[1].ttf");
+}
+
+h1 {
+    font-family: customFont;
+    color: white;
+    text-align: center;
+    
 }
