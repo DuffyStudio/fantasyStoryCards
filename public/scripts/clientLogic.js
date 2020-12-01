@@ -31,11 +31,19 @@ function draw() {
   }
   document.getElementById("canvas").onmousemove = function(e){
       if(isDrawing){
-        var pos={};
-        pos.x = e.offsetX;
-        pos.y = e.offsetY;
-        drawingInstructions.push(pos);
-        makeMark(pos);
+        var point={};
+        point.color = getColor();
+        if(point.color=="green"){
+            point.color="rgb(0,255,0)";
+        }else if (point.color=="orange"){
+            point.color="rgb(255,94,19)";
+        }else if (point.color == "purple"){
+            point.color="rgb(255,0,255)";
+        }
+        point.x = e.offsetX;
+        point.y = e.offsetY;
+        drawingInstructions.push(point);
+        makeMark(point);
     }
   }
   document.getElementById("canvas").onmouseup = function(e){
@@ -44,12 +52,40 @@ function draw() {
       drawingInstructions = [];
   }
 
-  function makeMark(pos){
-    var color = 'green';
+  function makeMark(point){
+    var color = point.color;
     var radius = 10;
     var ctx = document.getElementById('canvas').getContext('2d');
     ctx.beginPath();
-    ctx.arc(pos.x, pos.y, radius, 0, 2 * Math.PI, false);
+    ctx.arc(point.x, point.y, radius, 0, 2 * Math.PI, false);
     ctx.fillStyle = color;
     ctx.fill();
   }
+
+  function getColor() { 
+    var ele = document.getElementsByName('color'); 
+      
+    for(i = 0; i < ele.length; i++) { 
+        if(ele[i].checked){
+          return(ele[i].value);
+        } 
+    } 
+  }   
+  function highlightRadio(){
+    var ele = document.getElementsByName('color');
+    var control = document.getElementsByClassName('radioControl');
+    for(i = 0; i < ele.length; i++) { 
+        if(ele[i].checked){
+          control[i].classList.add("radioHighlight");
+        } else{
+          control[i].classList.remove("radioHighlight")
+        }
+    } 
+  }
+  function addRadioListeners(){
+    var ele = document.getElementsByName('color'); 
+    for(i = 0; i < ele.length; i++) { 
+      ele[i].addEventListener('change', highlightRadio);
+    }
+  }
+  addRadioListeners();
