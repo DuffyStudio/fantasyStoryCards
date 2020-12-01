@@ -7,7 +7,12 @@ function addSocketEvents(socket){
     console.log(data);
     document.getElementById("messages").innerHTML +=data+"<br>";
     // alert(data);
-  })
+  });
+  socket.on('shape',function(data){
+    for (var point of data){
+      makeMark(point);
+    }
+  });
 }
 //add the event handlers to the client socket
 addSocketEvents(socket);

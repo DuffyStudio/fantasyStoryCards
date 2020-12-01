@@ -28,6 +28,9 @@ io.on('connection', function(socket){
   socket.on('msg',function(data){
     io.emit('msg',socket.playerName+" : " +data.msg);
   });
+  socket.on('shape',function(data){
+    io.emit('shape',data);
+  });
   // socket.on('playerDie',function(){
   //   game.removePlayer(socket.playerId);
   // });

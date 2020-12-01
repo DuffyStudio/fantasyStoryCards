@@ -24,3 +24,32 @@ function draw() {
       }
     }
   }
+  var isDrawing = false;
+  var drawingInstructions = [];
+  document.getElementById("canvas").onmousedown = function(e){
+    isDrawing = true;
+  }
+  document.getElementById("canvas").onmousemove = function(e){
+      if(isDrawing){
+        var pos={};
+        pos.x = e.offsetX;
+        pos.y = e.offsetY;
+        drawingInstructions.push(pos);
+        makeMark(pos);
+    }
+  }
+  document.getElementById("canvas").onmouseup = function(e){
+      isDrawing = false;
+      socket.emit('shape',drawingInstructions);
+      drawingInstructions = [];
+  }
+
+  function makeMark(pos){
+    var color = 'green';
+    var radius = 10;
+    var ctx = document.getElementById('canvas').getContext('2d');
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, radius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
