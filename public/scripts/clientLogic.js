@@ -59,11 +59,17 @@ function draw() {
     }
   }
   document.getElementById("canvas").onmouseup = function(e){
-      isDrawing = false;
-      socket.emit('shape',drawingInstructions);
-      drawingInstructions = [];
-      lastPos.x = null;
-      lastPos.y = null;
+    finishMark(e);  
+  }
+  document.getElementById("canvas").onmouseleave = function(e){
+    finishMark(e);  
+  }
+  function finishMark(e){
+    isDrawing = false;
+    socket.emit('shape',drawingInstructions);
+    drawingInstructions = [];
+    lastPos.x = null;
+    lastPos.y = null;
   }
 
   function makeMark(mark){
