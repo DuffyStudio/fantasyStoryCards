@@ -73,7 +73,8 @@ function draw() {
 
     ctx.beginPath();
     if(mark.line){
-        ctx.lineWidth = radius*2; 
+        ctx.lineWidth = radius*2;
+        ctx.lineCap = "round"; 
         ctx.moveTo(mark.lastX, mark.lastY); 
         ctx.lineTo(mark.x, mark.y);  
         ctx.strokeStyle = color; 
