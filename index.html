@@ -2,6 +2,7 @@
 <html>
     <head>
   <link rel="shortcut icon" href="">
+  <script src="/socket.io/socket.io.js"></script>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <title>Spaghetti Cat</title>
 </head>
@@ -17,11 +18,71 @@
     <button id="box button" onclick="postMessage()">Click Me</button>
   </div>
   <p id="points"></p>
-	<script src="scripts/clientSocket.js"></script>
-  <script src="scripts/clientLogic.js"></script>
+
   <!-- <script src="scripts/graphics.js"></script> -->
   <!--<button class="center" type="button">Button 1</button>-->
-  <canvas id="canvas"></canvas>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <div class="menuPanel" id="colorSelect">
+    <div id="colorContainer">
+      <label>
+        <input class="radio" name="color" type="radio" id="black" value='black'/>
+        <div class="radioControl" id="blackControl"></div>
+      </label>
+      <label>
+        <input class="radio" name="color" type="radio" id="red" value='red'/>
+        <div class="radioControl" id="redControl"></div>
+      </label>
+      <label>
+        <input class="radio" name="color" type="radio" id="orange" value='orange'/>
+        <div class="radioControl" id="orangeControl"></div>
+      </label>
+      <label>
+        <input class="radio" name="color" type="radio" id="yellow" value='yellow'/>
+        <div class="radioControl" id="yellowControl"></div>
+      </label>
+      <label>
+        <input class="radio" name="color" type="radio" id="green" value='green'/>
+        <div class="radioControl" id="greenControl"></div>
+      </label>
+      <label>
+        <input class="radio" name="color" type="radio" id="blue" value='blue'/>
+        <div class="radioControl" id="blueControl"></div>
+      </label>
+      <label>
+        <input class="radio" name="color" type="radio" id="purple" value='purple'/>
+        <div class="radioControl" id="purpleControl"></div>
+      </label>
+    </div>
+  </div>
+
+  <div class="menuPanel" id="brushSelect">
+    <div id="brushContainer">
+      <label>
+        <input class="radio" name="brush" type="radio" id="vsmall" value='vsmall'/>
+        <div class="radioControl" id="vsmallcontrol"></div>
+      </label>
+      <label>
+        <input class="radio" name="brush" type="radio" id="small" value='small'/>
+        <div class="radioControl" id="smallcontrol"></div>
+      </label>
+      <label>
+        <input class="radio" name="brush" type="radio" id="med" value='med'/>
+        <div class="radioControl" id="medcontrol"></div>
+      </label>
+      <label>
+        <input class="radio" name="brush" type="radio" id="big" value='big'/>
+        <div class="radioControl" id="bigcontrol"></div>
+      </label>
+      <label>
+        <input class="radio" name="brush" type="radio" id="vbig" value='vbig'/>
+        <div class="radioControl" id="vbigcontrol"></div>
+      </label>
+      <button id="erase" onclick="erase()">Clear Drawing</button>
+    </div>
+    
+  </div>
+  <script src="scripts/clientSocket.js"></script>
+  <script src="scripts/clientLogic.js"></script>
 </body>
 
 </html>

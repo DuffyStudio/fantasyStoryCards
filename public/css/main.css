@@ -43,9 +43,107 @@ p{
 
 #canvas{
     background-color: white;
-    height: 500px;
-    width: 500px;
+    position:absolute;
+    left:1%;
+    top:1%;
 }
+.menuPanel{
+    position: absolute;
+  }
+#colorSelect{
+    top:79%;
+    width:40%;
+    height:20%;
+    left: 1%;
+  }
+  #colorContainer{
+    height: 100%;
+    width:90%;
+    margin:auto;
+    background-color: gray;
+    border-radius: 10%;
+  }
+  
+  label{
+    width:13%;
+    height:60%;
+    display:inline-block;
+    margin:auto;
+    padding:0;
+    border-radius: 100%;
+  }
+  .radio{
+    width:0px;
+    height:0px;
+    opacity:0;
+    margin:0;
+    padding:0;
+    border-radius: 100%;
+  }
+  .radioHighlight{
+    border: white 7px solid;
+    box-sizing: border-box;
+  }
+  .radioControl{
+    width:100%;
+    height: 100%;
+    margin:0;
+    padding:0;
+    border-radius: 100%;
+  }
+  .radioControl:hover{
+    cursor: pointer;
+  }
+  #brushSelect{
+    top:79%;
+    width:22%;
+    height:20%;
+    left: 42%;
+  }
+  #brushContainer{
+    height: 100%;
+    width:100%;
+    margin:auto;
+    background-color: gray;
+    border-radius: 10%;
+  }
+  #brushContainer .radioControl{
+      margin-left: auto;
+  }
+  #vsmallcontrol{
+      background-color: black;
+      height:5px;
+      width:5px;
+  }
+  #smallcontrol{
+    background-color: black;
+      height:15px;
+      width:15px;
+  }
+  #medcontrol{
+    background-color: black;
+    height:30px;
+    width:30px;
+  }
+  #bigcontrol{
+    background-color: black;
+    height:50px;
+    width:50px;
+  }
+  #vbigcontrol{
+    background-color: black;
+    height:75px;
+    width:75px;
+  }
+  #erase{
+      background-color: red;
+      color:white;
+      font-weight: bolder;
+      border-radius: 15px;
+      left:10%;
+      position: relative;
+      border: white 2px solid;
+  }
 
 #box {
     position: absolute;
@@ -87,3 +185,43 @@ p{
     border: 10px solid lightgray;
     box-sizing: border-box;
 }
+
+  #blackControl{
+    background-color:#000000;
+  }
+  #redControl{
+    background-color:#FF0000;
+  }
+  #orangeControl{
+    background-color:#FF5E13;
+  }
+  #yellowControl{
+    background-color:#FFFF00;
+  }
+  #greenControl{
+    background-color:#00FF00;
+  }
+  #blueControl{
+    background-color:#0000FF;
+  }
+  #purpleControl{
+    background-color:#FF00FF;
+  }
+  .redColor{
+    background-color:#FF0000;
+  }
+  .orangeColor{
+    background-color:#FF5E13;
+  }
+  .yellowColor{
+    background-color:#FFFF00;
+  }
+  .greenColor{
+    background-color:#00FF00;
+  }
+  .blueColor{
+    background-color:#0000FF;
+  }
+  .purpleColor{
+    background-color:#FF00FF;
+  }
