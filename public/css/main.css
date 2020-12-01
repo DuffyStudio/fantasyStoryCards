@@ -148,6 +148,9 @@ p{
   #blackControl{
     background-color:#000000;
   }
+  #whiteControl{
+    background-color:#FFFFFF;
+  }
   #redControl{
     background-color:#FF0000;
   }
