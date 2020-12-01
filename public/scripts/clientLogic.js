@@ -26,40 +26,63 @@ function draw() {
   }
   var isDrawing = false;
   var drawingInstructions = [];
+  var lastPos = {};
+  lastPos.x= null;
+  lastPos.y= null;
   document.getElementById("canvas").onmousedown = function(e){
     isDrawing = true;
   }
   document.getElementById("canvas").onmousemove = function(e){
       if(isDrawing){
-        var point={};
-        point.color = getColor();
-        if(point.color=="green"){
-            point.color="rgb(0,255,0)";
-        }else if (point.color=="orange"){
-            point.color="rgb(255,94,19)";
-        }else if (point.color == "purple"){
-            point.color="rgb(255,0,255)";
+        var mark={};
+        mark.color = getColor();
+        if(mark.color=="green"){
+            mark.color="rgb(0,255,0)";
+        }else if (mark.color=="orange"){
+            mark.color="rgb(255,94,19)";
+        }else if (mark.color == "purple"){
+            mark.color="rgb(255,0,255)";
         }
-        point.x = e.offsetX;
-        point.y = e.offsetY;
-        drawingInstructions.push(point);
-        makeMark(point);
+        mark.x = e.offsetX;
+        mark.y = e.offsetY;
+        if(lastPos.x != null){
+            mark.line = true;
+            mark.lastX = lastPos.x;
+            mark.lastY = lastPos.y;
+        } else{
+            mark.line = false;
+        }
+        lastPos.x = e.offsetX;
+        lastPos.y = e.offsetY;
+        drawingInstructions.push(mark);
+        makeMark(mark);
     }
   }
   document.getElementById("canvas").onmouseup = function(e){
       isDrawing = false;
       socket.emit('shape',drawingInstructions);
       drawingInstructions = [];
+      lastPos.x = null;
+      lastPos.y = null;
   }
 
-  function makeMark(point){
-    var color = point.color;
+  function makeMark(mark){
+    var color = mark.color;
     var radius = 10;
     var ctx = document.getElementById('canvas').getContext('2d');
+
     ctx.beginPath();
-    ctx.arc(point.x, point.y, radius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = color;
-    ctx.fill();
+    if(mark.line){
+        ctx.lineWidth = radius*2; 
+        ctx.moveTo(mark.lastX, mark.lastY); 
+        ctx.lineTo(mark.x, mark.y);  
+        ctx.strokeStyle = color; 
+        ctx.stroke();
+    }else{
+        ctx.arc(mark.x, mark.y, radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
   }
 
   function getColor() { 

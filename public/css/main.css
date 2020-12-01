@@ -87,6 +87,9 @@ p{
     cursor: pointer;
   }
   #redControl{
+    background-color:#000000;
+  }
+  #redControl{
     background-color:#FF0000;
   }
   #orangeControl{
