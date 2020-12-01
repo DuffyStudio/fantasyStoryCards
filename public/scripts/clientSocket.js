@@ -13,6 +13,9 @@ function addSocketEvents(socket){
       makeMark(point);
     }
   });
+  socket.on('erase',function(){
+    clearCanvas();
+  });
 }
 //add the event handlers to the client socket
 addSocketEvents(socket);

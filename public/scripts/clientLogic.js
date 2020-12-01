@@ -83,6 +83,10 @@ function postMessage(){
     }
   }
 
+  function clearCanvas(){
+      var ctx = document.getElementById('canvas').getContext('2d');
+      ctx.clearRect(0,0, canvas.width, canvas.height);
+  }
   function getColor() { 
     var ele = document.getElementsByName('color'); 
       
@@ -91,7 +95,11 @@ function postMessage(){
           return(ele[i].value);
         } 
     } 
-  }   
+  }
+
+  function erase(){
+      socket.emit('clearDrawing');
+  }
   function highlightRadio(){
     var ele = document.getElementsByName('color');
     var control = document.getElementsByClassName('radioControl');
@@ -163,6 +171,7 @@ function postMessage(){
 
   window.onresize = function(){
       resizeCanvas();
+      socket.emit('requestDrawing');
   }
   resizeCanvas();
   

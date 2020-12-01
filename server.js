@@ -7,7 +7,7 @@ let io = require('socket.io')(http);
 const request = require('request');
 
 //custom includes
-var game = require('./game.js');
+var Whiteboard = require('./whiteboard.js');
 //express client files
 app.use(express.static('public'));
 
@@ -15,7 +15,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-
+var whiteboard = new Whiteboard.Whiteboard();
 
 io.on('connection', function(socket){
   // console.log('A user connected.');
@@ -24,12 +24,21 @@ io.on('connection', function(socket){
   // nextPlayerId++;
   socket.on('playerName',function(data){
     socket.playerName = data;
+    io.emit('shape',whiteboard.getCurrentDrawing());
   });
   socket.on('msg',function(data){
     io.emit('msg',socket.playerName+" : " +data.msg);
   });
   socket.on('shape',function(data){
     io.emit('shape',data);
+    whiteboard.addToDrawing(data);
+  });
+  socket.on('requestDrawing',function(){
+    io.emit('shape',whiteboard.getCurrentDrawing());
+  });
+  socket.on('clearDrawing',function(){
+    whiteboard.clearDrawing();
+    io.emit('erase');
   });
   // socket.on('playerDie',function(){
   //   game.removePlayer(socket.playerId);
