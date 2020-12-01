@@ -1,15 +1,25 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="public/css/main.css">
-        <title>Spaghetti Cat</title>
-    </head>
-        
-   <body>
-       <h1 class="bg">SPAGHETTI CAT</h1>
-       <img class="center" src="public/images/spaghetticat.jpg" alt="Wah wah waaaah"
+  <link rel="shortcut icon" href="">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <title>Spaghetti Cat</title>
+</head>
+
+<body>
+  <h1 class="bg">SPAGHETTI CAT</h1>
+  <img class="center" src="images/spaghetticat.jpg" alt="Wah wah waaaah"
                                                  width="300"
                                                  height="300">
-       <button type="button">Button 1</button>
-   </body>
+ 
+  <p id="messages"></p>
+  <input type="text" id="msg"></input>
+  <button onclick="postMessage()">Click Me</button>
+  <p id="points"></p>
+	<script src="scripts/clientSocket.js"></script>
+  <script src="scripts/clientLogic.js"></script>
+  <!-- <script src="scripts/graphics.js"></script> -->
+  <button class="center" type="button">Button 1</button>
+</body>
+
 </html>

@@ -1,19 +1,19 @@
 body, html {
     height: 100%;
-    background-image: url("../../public/images/vhs-overlay-png.png");
+    background-image: url("../images/vhs-overlay-png.png");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    font-family: customFont;
 }
 
 @font-face {
     font-family: customFont;
-    src: url("../../public/css/VCR_OSD_MONO_1.001[1].ttf");
+    src: url("VCR_OSD_MONO_1.001[1].ttf");
 }
 
 h1 {
-    font-family: customFont;
     color: white;
     text-align: center;
     
@@ -21,7 +21,6 @@ h1 {
 
 button {
     border: none;
-    color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -38,7 +37,9 @@ button {
     transform: translate(-50%, -50%);
 }
 
-
+p{
+    background-color: white;
+}
 
 
 
