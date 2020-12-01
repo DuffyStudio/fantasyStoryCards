@@ -1,21 +1,26 @@
 <!doctype html>
 <html>
-
-<head>
-  <script src="/socket.io/socket.io.js"></script>
+    <head>
   <link rel="shortcut icon" href="">
+  <script src="/socket.io/socket.io.js"></script>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <title>Spaghetti Cat</title>
 </head>
 
 <body>
   <h1 class="bg">SPAGHETTI CAT</h1>
-  <p id="messages"></p>
-  <input type="text" id="msg"></input>
-  <button onclick="postMessage()">Click Me</button>
+  <!--<img class="center" src="images/spaghetticat.jpg" alt="Wah wah waaaah"
+                                                 width="300"
+                                                 height="300"> -->
+  <div id="box">
+    <p id="box1"></p>
+    <input type="text" id="box2"></input>
+    <button id="box button" onclick="postMessage()">Click Me</button>
+  </div>
   <p id="points"></p>
 
   <!-- <script src="scripts/graphics.js"></script> -->
+  <!--<button class="center" type="button">Button 1</button>-->
   <canvas id="canvas" width="500" height="500"></canvas>
   <div class="menuPanel" id="colorSelect">
     <div id="colorContainer">

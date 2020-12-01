@@ -9,10 +9,19 @@ messageFactory.makeMSG = function(string){
 }
 
 function postMessage(){
-    var str = document.getElementById("msg").value;
+    var str = document.getElementById("box2").value;
+    document.getElementById("box2").value = "";
     var data = messageFactory.makeMSG(str);
     socket.emit('msg',data);
 }
+
+  document.addEventListener("keydown", handleKeypress);
+  
+  function handleKeypress(e) {
+     if (e.code == 'Enter'){
+         postMessage();
+     }
+  }
 
   var isDrawing = false;
   var drawingInstructions = [];

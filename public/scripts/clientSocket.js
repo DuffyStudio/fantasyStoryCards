@@ -5,7 +5,7 @@ var socket = io();
 function addSocketEvents(socket){
   socket.on("msg",function(data){
     console.log(data);
-    document.getElementById("messages").innerHTML +=data+"<br>";
+    document.getElementById("box1").innerHTML +=data+"<br>";
     // alert(data);
   });
   socket.on('shape',function(data){
