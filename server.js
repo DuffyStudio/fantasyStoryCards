@@ -18,15 +18,16 @@ app.get('/', function(req, res){
 
 
 io.on('connection', function(socket){
-  var data = "this is a test";
-  io.emit("event",data);
   // console.log('A user connected.');
   // console.log('Assigning player id '+nextPlayerId);
   // socket.playerId = nextPlayerId;
   // nextPlayerId++;
-  // socket.on('playerJoin',function(data){
-  //   game.addPlayer(socket.playerId,socket.id,data.name,data.color);
-  // });
+  socket.on('playerName',function(data){
+    socket.playerName = data;
+  });
+  socket.on('msg',function(data){
+    io.emit('msg',socket.playerName+" : " +data.msg);
+  });
   // socket.on('playerDie',function(){
   //   game.removePlayer(socket.playerId);
   // });
@@ -45,5 +46,7 @@ io.on('connection', function(socket){
   // });
   // game.emitHighScores();
 });
+
+
 
 http.listen(process.env.PORT || 3000, function(){});

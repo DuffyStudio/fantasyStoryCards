@@ -1,10 +1,14 @@
-var points = 0;
-function doThing(){
-    points ++;
-    document.getElementById("points").innerHTML = "points: "+points;
-  }
-  function loop(){
-      doThing();
-      setTimeout(loop,100);
-  }
-  loop();
+var pName = prompt("Enter your name");
+socket.emit('playerName',pName);
+var messageFactory = {};
+messageFactory.makeMSG = function(string){
+    var data = {};
+    data.msg = string;
+    return data;
+}
+
+function postMessage(){
+    var str = document.getElementById("msg").value;
+    var data = messageFactory.makeMSG(str);
+    socket.emit('msg',data);
+}
