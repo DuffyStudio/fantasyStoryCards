@@ -41,5 +41,9 @@ p{
     background-color: white;
 }
 
-
+#canvas{
+    background-color: white;
+    height: 500px;
+    width: 500px;
+}
 
