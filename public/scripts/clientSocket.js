@@ -5,7 +5,9 @@ var socket = io();
 function addSocketEvents(socket){
   socket.on("msg",function(data){
     console.log(data);
-    document.getElementById("box1").innerHTML +=data+"<br>";
+    var msgDiv = document.getElementById("box1");
+    msgDiv.innerHTML +=data+"<br>";
+    msgDiv.scrollTop = msgDiv.scrollHeight;
     // alert(data);
   });
   socket.on('shape',function(data){

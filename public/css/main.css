@@ -162,6 +162,7 @@ p{
     margin: 0;
     border: 10px solid lightgray;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 #box2 {
