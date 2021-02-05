@@ -9,11 +9,21 @@ function makeDealButton(type){
   button.onclick = function(){deal(type)};
   document.body.append(button);
 }
-function makeControls(){
+function makeDice(d1,d2){
+  var button = document.createElement('button');
+  button.type = button;
+  button.innerHTML = d1 +"  "+ d2;
+  button.id = "dice";
+  button.onclick = function(){rollDice()};
+  document.body.append(button);
+}
+
+function makeControls(d1,d2){
   makeDealButton('race');
   makeDealButton('location');
   makeDealButton('item');
   makeDealButton('monster');
+  makeDice(d1,d2);
 }
 function makeCardGraphics(data,index){
 var id=(data.card.title+Math.floor(Date.now()*Math.random()));

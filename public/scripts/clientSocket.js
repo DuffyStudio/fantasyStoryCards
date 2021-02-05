@@ -6,7 +6,7 @@ function addSocketEvents(socket){
 
   socket.on('tableData',function(data){
     document.body.innerHTML="";
-    makeControls();
+    makeControls(data.d1,data.d2);
     for (var i=0;i<data.cards.length; i++){
       makeCardGraphics(data.cards[i],i);
     }
@@ -28,3 +28,6 @@ function deal(type){
 function removeCard(index){
   socket.emit('removeCard',index);
 };
+function rollDice(){
+  socket.emit('roll');
+}

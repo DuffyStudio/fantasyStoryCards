@@ -76,13 +76,6 @@ function deal(type){
 
 //console.log(table.makeClientData());
 
-function rollDice(){
-  var data = {};
-  data.d1 = (Math.floor(Math.random()*6)+1);
-  data.d2 = (Math.floor(Math.random()*6)+1);
-  return data;
-}
-
 io.on('connection', function(socket){
   console.log(" a user connected");
   updateClients();
@@ -98,7 +91,8 @@ io.on('connection', function(socket){
     deal(type);
   });
   socket.on('roll',function(){
-    io.emit('rollDice',rollDice());
+    table.rollDice();
+    updateClients();
   });
   // socket.on('msg',function(data){
   //   io.emit('msg',socket.playerName+" : " +data.msg);

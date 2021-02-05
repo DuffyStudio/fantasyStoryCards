@@ -2,6 +2,8 @@ module.exports.CardTable = class CardTable{
     constructor(){
         this.decks=[];
         this.cards=[];
+        this.d1 = 6;
+        this.d2 = 6;
     }
     removeCard(index){
         this.cards.splice(index,1);
@@ -12,10 +14,16 @@ module.exports.CardTable = class CardTable{
     addCard(card,type){
         this.cards.push(new CardPos(card,type));
     }
+    rollDice(){
+        this.d1 = 1+(Math.floor(Math.random()*6));
+        this.d2 = 1+(Math.floor(Math.random()*6));
+    }
     makeClientData(){
         var data = {};
         data.decks = this.decks;
         data.cards = this.cards;
+        data.d1 = this.d1;
+        data.d2 = this.d2;
         return data;
     }
     moveCard(index,x,y){
