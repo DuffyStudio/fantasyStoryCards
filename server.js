@@ -69,6 +69,9 @@ function deal(type){
     case "location":
       deck = cards.locations;
       break;
+    case "background":
+      deck = cards.backgrounds;
+      break;
   }
   table.addCard(deck.draw(),type);
   updateClients();

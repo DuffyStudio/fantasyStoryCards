@@ -23,6 +23,7 @@ function makeControls(d1,d2){
   makeDealButton('location');
   makeDealButton('item');
   makeDealButton('monster');
+  makeDealButton('background');
   makeDice(d1,d2);
 }
 function makeCardGraphics(data,index){

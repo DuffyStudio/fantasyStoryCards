@@ -1,6 +1,7 @@
 html, body{
   margin:0;
   padding:0;
+  background-color: lightslategray;
 }
 
 .gameCard{
@@ -17,6 +18,9 @@ html, body{
 }
 .race{
   background-color: darkturquoise;
+}
+.background{
+  background-color: white;
 }
 .location {
   background-color: darkolivegreen;
