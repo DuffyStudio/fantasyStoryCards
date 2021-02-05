@@ -1,231 +1,53 @@
-body, html {
-    height: 100%;
-    background-image: url("../images/vhs-overlay-png.png");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    font-family: customFont;
+html, body{
+  margin:0;
+  padding:0;
 }
 
-@font-face {
-    font-family: customFont;
-    src: url("VCR_OSD_MONO_1.001[1].ttf");
+.gameCard{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: small;
+  border: 5px black solid;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  border-radius:5px;
 }
-
-h1 {
-    color: white;
-    text-align: center;
-    
+.monster {
+  background-color: maroon;
 }
-
-button {
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+.race{
+  background-color: darkturquoise;
 }
-
-.center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+.location {
+  background-color: darkolivegreen;
 }
-
-p{
-    background-color: white;
+.item {
+  background-color: indigo;
 }
-
-#canvas{
-    background-color: white;
-    position:absolute;
-    left:1%;
-    top:1%;
+.cardTitle{
+  background-color: burlywood;
+  position:relative;
+  height:10%;
+  width:90%;
+  left:5%;
+  top:5%;
+  border-radius:2px;   
 }
-.menuPanel{
-    position: absolute;
-  }
-#colorSelect{
-    top:79%;
-    width:40%;
-    height:20%;
-    left: 1%;
-  }
-  #colorContainer{
-    height: 100%;
-    width:90%;
-    margin:auto;
-    background-color: gray;
-    border-radius: 10%;
-  }
-  
-  label{
-    width:13%;
-    height:60%;
-    display:inline-block;
-    margin:auto;
-    padding:0;
-    border-radius: 100%;
-  }
-  .radio{
-    width:0px;
-    height:0px;
-    opacity:0;
-    margin:0;
-    padding:0;
-    border-radius: 100%;
-  }
-  .radioHighlight{
-    border: white 7px solid;
-    box-sizing: border-box;
-  }
-  .radioControl{
-    width:100%;
-    height: 100%;
-    margin:0;
-    padding:0;
-    border-radius: 100%;
-  }
-  .radioControl:hover{
-    cursor: pointer;
-  }
-  #brushSelect{
-    top:79%;
-    width:22%;
-    height:20%;
-    left: 42%;
-  }
-  #brushContainer{
-    height: 100%;
-    width:100%;
-    margin:auto;
-    background-color: gray;
-    border-radius: 10%;
-  }
-  #brushContainer .radioControl{
-      margin-left: auto;
-  }
-  #vsmallcontrol{
-      background-color: black;
-      height:5px;
-      width:5px;
-  }
-  #smallcontrol{
-    background-color: black;
-      height:15px;
-      width:15px;
-  }
-  #medcontrol{
-    background-color: black;
-    height:30px;
-    width:30px;
-  }
-  #bigcontrol{
-    background-color: black;
-    height:50px;
-    width:50px;
-  }
-  #vbigcontrol{
-    background-color: black;
-    height:75px;
-    width:75px;
-  }
-  #erase{
-      background-color: red;
-      color:white;
-      font-weight: bolder;
-      border-radius: 15px;
-      left:10%;
-      position: relative;
-      border: white 2px solid;
-  }
-
-#box {
-    position: absolute;
-    width: 30%;
-    height: 55%;
-    right: 10%;
-    top: 20%;
+.cardImage{
+  background-color: burlywood;
+  position:relative;
+  height:40%;
+  width:90%;
+  left:5%;
+  top:10%;
+  border-radius:2px;  
 }
-
-#box1 {
-    float: left;
-    height: 80%;
-    top: 0%;
-    position: relative;
-    width: 100%;
-    margin: 0;
-    border: 10px solid lightgray;
-    box-sizing: border-box;
-    overflow-y: auto;
+.cardContent{
+  background-color: burlywood;
+  position:relative;
+  height:30%;
+  width:90%;
+  left:5%;
+  top:15%;
+  border-radius:2px; 
 }
-
-#box2 {
-    bottom: 0%;
-    margin: 0%;
-    height: 20%;
-    position: relative;
-    width: 80%;
-    padding: 20px;
-    border: 10px solid lightgray;
-    box-sizing: border-box;
-}
-
-#box button {
-    float: right;
-    height: 20%;
-    right: 0;
-    position: relative;
-    width: 20%;
-    padding: 20px;
-    border: 10px solid lightgray;
-    box-sizing: border-box;
-}
-
-  #blackControl{
-    background-color:#000000;
-  }
-  #whiteControl{
-    background-color:#FFFFFF;
-  }
-  #redControl{
-    background-color:#FF0000;
-  }
-  #orangeControl{
-    background-color:#FF5E13;
-  }
-  #yellowControl{
-    background-color:#FFFF00;
-  }
-  #greenControl{
-    background-color:#00FF00;
-  }
-  #blueControl{
-    background-color:#0000FF;
-  }
-  #purpleControl{
-    background-color:#FF00FF;
-  }
-  .redColor{
-    background-color:#FF0000;
-  }
-  .orangeColor{
-    background-color:#FF5E13;
-  }
-  .yellowColor{
-    background-color:#FFFF00;
-  }
-  .greenColor{
-    background-color:#00FF00;
-  }
-  .blueColor{
-    background-color:#0000FF;
-  }
-  .purpleColor{
-    background-color:#FF00FF;
-  }

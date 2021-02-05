@@ -1,63 +1,112 @@
 //node module includes
 const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 let express = require('express');
-var app = require('express')();
+var bodyParser = require("body-parser");
+var router = express.Router();
+var app = express();
 var http = require('http').Server(app);
 let io = require('socket.io')(http);
 const request = require('request');
+var fs = require('fs');
 
 //custom includes
-var Whiteboard = require('./whiteboard.js');
+var StoryCards = require('./storyCards.js');
+var CardTable = require('./cardTable.js');
+
 //express client files
 app.use(express.static('public'));
-
+//config body parser middle ware
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+//express html directs
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
+app.get('/addcard', function(req, res){
+  res.sendFile(__dirname + '/addCard.html');
+});
+//express post requests
+app.post('/addNewCard', function(req, res, next){
 
-var whiteboard = new Whiteboard.Whiteboard();
+  cards.addNewCard(req.body);
+
+});
+//express post requests
+app.post('/saveCards', function(req, res, next){
+
+  save(cards);
+
+});
+
+function load(cards){
+  data = JSON.parse(fs.readFileSync(__dirname + '/carddata.json').toString());
+  cards.load(data);
+}
+
+function save(data){
+  fs.writeFile(__dirname + '/carddata.json', JSON.stringify(data), function() { return true; });
+}
+
+var cards = new StoryCards.StoryCards();
+load(cards);
+var table = new CardTable.CardTable();
+
+function deal(type){
+  var deck = {};
+  switch(type){
+    case "monster":
+      deck = cards.monsters;
+      break;
+    case "race":
+      deck = cards.races;
+      break;
+    case "item":
+      deck = cards.weapons;
+      break;
+    case "location":
+      deck = cards.locations;
+      break;
+  }
+  table.addCard(deck.draw(),type);
+  updateClients();
+}
+
+//console.log(table.makeClientData());
+
 
 io.on('connection', function(socket){
-  // console.log('A user connected.');
-  // console.log('Assigning player id '+nextPlayerId);
-  // socket.playerId = nextPlayerId;
-  // nextPlayerId++;
-  socket.on('playerName',function(data){
-    socket.playerName = data;
-    io.emit('shape',whiteboard.getCurrentDrawing());
+  console.log(" a user connected");
+  updateClients();
+  socket.on('moveCard',function(data){
+    table.moveCard(data.index,data.x,data.y);
+    updateClients();
   });
-  socket.on('msg',function(data){
-    io.emit('msg',socket.playerName+" : " +data.msg);
+  socket.on('removeCard',function(index){
+    table.removeCard(index);
+    updateClients();
   });
-  socket.on('shape',function(data){
-    io.emit('shape',data);
-    whiteboard.addToDrawing(data);
+  socket.on('deal',function(type){
+    deal(type);
   });
-  socket.on('requestDrawing',function(){
-    io.emit('shape',whiteboard.getCurrentDrawing());
-  });
-  socket.on('clearDrawing',function(){
-    whiteboard.clearDrawing();
-    io.emit('erase');
-  });
-  // socket.on('playerDie',function(){
-  //   game.removePlayer(socket.playerId);
+  // socket.on('msg',function(data){
+  //   io.emit('msg',socket.playerName+" : " +data.msg);
   // });
-  // socket.on('disconnect', function(){
-  //   console.log('player id '+socket.playerId + ' disconnected');
-  //   game.removePlayer(socket.playerId);
+  // socket.on('shape',function(data){
+  //   io.emit('shape',data);
+  //   whiteboard.addToDrawing(data);
   // });
-  // socket.on('playerTurn', function(data){
-  //   game.turnPlayer(socket.playerId,data);
+  // socket.on('requestDrawing',function(){
+  //   io.emit('shape',whiteboard.getCurrentDrawing());
   // });
-  // socket.on('playerGrow', function(){
-  //   game.growPlayer(socket.playerId);
+  // socket.on('clearDrawing',function(){
+  //   whiteboard.clearDrawing();
+  //   io.emit('erase');
   // });
-  // socket.on('playerShrink', function(){
-  //   game.shrinkPlayer(socket.playerId);
-  // });
-  // game.emitHighScores();
 });
+
+function updateClients(){
+  io.emit('tableData',table.makeClientData());
+}
 
 
 

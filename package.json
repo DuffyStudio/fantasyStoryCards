@@ -1,18 +1,20 @@
 {
-  "name": "clicker-game",
+  "name": "fantasy-story-cards",
   "version": "1.0.0",
-  "description": "a clicker game with sockets",
+  "description": "a card game to teach dnd improv",
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.6.3",
     "request": "^2.88.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "nodejs-microdb": "*",
+    "body-parser": "1.19.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jared Anderson and Chris Duffy",
+  "author": "Chris Duffy",
   "license": "ISC"
 }

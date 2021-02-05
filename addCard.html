@@ -1,0 +1,41 @@
+<html>
+    <head></head>
+    <body>
+
+    <h1>Manage Cards</h1>
+    
+    <h2>Current Info</h2>
+    <p id="locationsCurrent">Locations</p>
+    <p id="backgroundsCurrent">Backgrounds</p>
+    <p id="racesCurrent">Races</p>
+    <p id="weaponsCurrent">Items</p>
+    <p id="monstersCurrent">Monsters</p>
+    
+    <h2>Add a new card</h2>
+    <form action="/addNewCard" method="post">
+        <label labelfor="deck">Deck</label>
+        <select name="deck">
+            <option>Location</option>
+            <option>BackGround</option>
+            <option>Race</option>
+            <option>Item</option>
+            <option>Monster</option>
+        </select>
+        <label labelfor="name">Card Name</label>
+        <input name="name" type="text"/>
+        <label labelfor="description">Description</label>
+        <input name="description" type="text"/>
+        <label labelfor="strength">Strength Number</label>
+        <input name="strength" type="number"/>
+        <label labelfor="skill">Skill Number</label>
+        <input name="skill" type="number"/>
+        <label labelfor="magic">Magic Number</label>
+        <input name="magic" type="number"/>
+        <input type="submit"/>
+    </form>
+    <h2>Save Changes</h2>
+    <form action="/saveCards" method="post">
+        <input type="submit"/>
+    </form>
+    </body>
+</html>
